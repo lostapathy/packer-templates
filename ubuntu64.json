@@ -34,7 +34,7 @@
       "iso_checksum": "3bfa6eac84d527380d0cc52db9092cde127f161e",
       "iso_checksum_type": "sha1",
       "iso_url": "{{user `mirror`}}/14.04/ubuntu-14.04.2-server-amd64.iso",
-      "output_directory": "build/ubuntu-14.04-amd64-virtualbox",
+      "output_directory": "build/ubuntu64-virtualbox",
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -62,7 +62,7 @@
         ]
       ],
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "ubuntu-14.04-amd64"
+      "vm_name": "ubuntu64"
     }
 
   ],
