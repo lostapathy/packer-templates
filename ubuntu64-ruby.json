@@ -1,0 +1,30 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-ovf",
+      "source_path": "build/ubuntu-14.04-amd64-virtualbox/ubuntu-14.04-amd64.ovf",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30s",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "chef-solo",
+      "cookbook_paths": ["cookbooks"],
+      "run_list": ["ruby"],
+      "json": {
+        "ruby": {
+          "version": "2.2.2"
+        }
+      }
+    }
+  ],
+  "post-processors": [
+    {
+      "output": "build/ubuntu64-ruby.box",
+      "type": "vagrant"
+    }
+  ]
+}
