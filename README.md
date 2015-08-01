@@ -1,6 +1,8 @@
 # packer-templates
 
-Packer templates and utilities for a devops workflow oriented towards composable system images.
+Packer templates and utilities for a devops workflow oriented towards composable system images.  This
+method of system image management allows for a more efficient workflow and makes it simpler to keep
+a variety of system images all up to date and built to a common standard.
 
 The general idea is to not use a given packer build as a complete system image build, but rather
 to think of it as composable function to perform a simple transformation in a chain.  These simple
@@ -18,6 +20,10 @@ the vagrant account for production.  The final builds in the chain run very quic
 of work is shared by their common ancestor and only performed once, we nearly cut overall build time in
 half.
 
+Build names should be based on what the image provides, but not what version.  This saves the effort
+of reconfiguring later images in the chain when software earlier in the chain is upgraded.  Not managing
+version upgrades by creating separate builds for each version also furthers our goal of keeping all
+images current and standardized.
 
 # Credits
 
