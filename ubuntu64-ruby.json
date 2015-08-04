@@ -21,6 +21,16 @@
           "version": "2.2.2"
         }
       }
+    },
+    {
+      "environment_vars": [
+        "CHEF_VERSION={{user `chef_version`}}"
+      ],
+      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "scripts": [
+        "scripts/common/minimize.sh"
+      ],
+      "type": "shell"
     }
   ],
   "post-processors": [
