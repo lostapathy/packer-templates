@@ -73,7 +73,6 @@
       ],
       "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
       "scripts": [
-        "scripts/fix_vbox.sh",
         "scripts/ubuntu/update.sh",
         "scripts/common/sshd.sh",
         "scripts/ubuntu/networking.sh",

@@ -30,5 +30,5 @@ apt-get -y purge popularity-contest
 
 apt-get -y autoremove
 apt-get -y clean
-rm -rf VBoxGuestAdditions_*.iso VBoxGuestAdditions_*.iso.?
+rm -rf /home/vagrant/VBoxGuestAdditions*.iso /home/vagrant/VBoxGuestAdditions*.iso.?
 rm -f /tmp/chef*deb

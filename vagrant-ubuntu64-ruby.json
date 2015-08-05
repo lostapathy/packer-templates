@@ -2,34 +2,28 @@
   "builders": [
     {
       "type": "virtualbox-ovf",
-      "source_path": "build/ubuntu64-virtualbox/ubuntu64.ovf",
+      "source_path": "build/ubuntu64-ruby-virtualbox/ubuntu64-ruby.ovf",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "30s",
       "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
-      "vm_name": "ubuntu64-ruby",
-      "output_directory": "build/ubuntu64-ruby-virtualbox"
+      "vm_name": "vagrant-ubuntu64-ruby"
     }
   ],
   "provisioners": [
     {
-      "type": "chef-solo",
-      "cookbook_paths": ["cookbooks"],
-      "run_list": ["ruby"],
-      "json": {
-        "ruby": {
-          "version": "2.2.2"
-        }
-      }
-    },
-    {
       "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
       "scripts": [
+        "scripts/ubuntu/cleanup.sh",
         "scripts/common/minimize.sh"
       ],
       "type": "shell"
     }
   ],
   "post-processors": [
+    {
+      "output": "build/vagrant-ubuntu64-ruby.box",
+      "type": "vagrant"
+    }
   ]
 }
