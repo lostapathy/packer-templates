@@ -9,6 +9,14 @@
       "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
       "vm_name": "ubuntu64-ruby",
       "output_directory": "build/ubuntu64-ruby-virtualbox"
+    },
+    {
+      "type": "digitalocean",
+      "image": "ubuntu-14-04-x64",
+      "region": "nyc2",
+      "size": "1gb",
+      "snapshot_name": "ubuntu64-ruby",
+      "state_timeout": "15m"
     }
   ],
   "provisioners": [
@@ -21,15 +29,7 @@
           "version": "2.2.2"
         }
       }
-    },
-    {
-      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "scripts": [
-        "scripts/common/minimize.sh"
-      ],
-      "type": "shell"
-    }
-  ],
+     }],
   "post-processors": [
   ]
 }

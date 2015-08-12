@@ -1,5 +1,8 @@
 ruby_version = node['ruby']['version']
 
+execute 'apt-get update' do
+  command 'apt-get update'
+end
 
 #include_recipe "ntp"
 package 'git'
@@ -7,7 +10,11 @@ package 'build-essential'
 package 'libaspell-dev'
 package 'libsqlite3-dev'
 package 'libreadline-gplv2-dev'
-  
+package 'build-essential'
+package 'libssl-dev'
+package 'libreadline-dev'
+package 'zlib1g-dev'
+package 'curl'
 
 src_filepath = "ruby-#{ruby_version}.tar.gz"
 remote_file "/tmp/#{src_filepath}" do
@@ -26,7 +33,7 @@ bash 'extract_module' do
   code <<-EOH
     tar xzf /tmp/#{src_filepath} -C /tmp/
     cd #{extract_path}
-    ./configure
+    ./configure --without-X11 --without-tcl --without-tk
     make
     sudo make install
     cd ..
