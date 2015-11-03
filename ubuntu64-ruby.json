@@ -17,6 +17,14 @@
       "size": "1gb",
       "snapshot_name": "ubuntu64-ruby",
       "state_timeout": "15m"
+    },
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami": "ami-9e6d1cf4",
+      "instance_type": "m3.medium",
+      "ssh_username": "ubuntu",
+      "ami_name": "ubuntu64-ruby"
     }
   ],
   "provisioners": [
