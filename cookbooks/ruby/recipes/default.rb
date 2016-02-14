@@ -17,8 +17,9 @@ package 'zlib1g-dev'
 package 'curl'
 
 src_filepath = "ruby-#{ruby_version}.tar.gz"
+rel_folder = ruby_version[0..2]
 remote_file "/tmp/#{src_filepath}" do
-  source "http://cache.ruby-lang.org/pub/ruby/2.2/#{src_filepath}"
+  source "http://cache.ruby-lang.org/pub/ruby/#{rel_folder}/#{src_filepath}"
   not_if { ::File.size?("/tmp/#{src_filepath}") || ::File.exists?("/usr/local/bin/ruby") }
 end
 

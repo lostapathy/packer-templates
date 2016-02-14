@@ -7,4 +7,4 @@ apt-get -y dist-upgrade
 apt-get -y install linux-headers-$(uname -r)
 
 /sbin/shutdown -r now
-
+sleep 60

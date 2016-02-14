@@ -2,38 +2,40 @@
   "builders": [
     {
       "type": "virtualbox-ovf",
-      "source_path": "build/ubuntu64-virtualbox/ubuntu64.ovf",
+      "source_path": "build/ubuntu64-ruby-virtualbox/ubuntu64-ruby.ovf",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
-      "ssh_pty": "true",
       "ssh_wait_timeout": "30s",
       "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
-      "vm_name": "ubuntu64-ruby",
-      "output_directory": "build/ubuntu64-ruby-virtualbox"
+      "vm_name": "ubuntu64-ruby-passenger",
+      "output_directory": "build/ubuntu64-ruby-passenger-virtualbox"
     },
     {
       "type": "digitalocean",
-      "image": "ubuntu-14-04-x64",
+      "image": "ubuntu64-ruby",
       "region": "nyc2",
       "size": "1gb",
-      "snapshot_name": "ubuntu64-ruby",
+      "snapshot_name": "ubuntu64-ruby-passenger",
       "state_timeout": "15m"
     },
     {
       "type": "amazon-ebs",
       "region": "us-east-1",
-      "source_ami": "ami-9e6d1cf4",
+      "source_ami": "ami-06067b6c",
       "instance_type": "m3.medium",
       "ssh_username": "ubuntu",
-      "ami_name": "ubuntu64-ruby"
+      "ami_name": "ubuntu64-ruby-passenger"
     }
   ],
   "provisioners": [
     {
       "type": "chef-solo",
       "cookbook_paths": ["cookbooks"],
-      "run_list": ["ruby"],
+      "run_list": ["passenger"],
       "json": {
+        "passenger": {
+          "version": "5.0.23"
+        },
         "ruby": {
           "version": "2.3.0"
         }
@@ -42,3 +44,4 @@
   "post-processors": [
   ]
 }
+
