@@ -34,7 +34,7 @@
       "run_list": ["passenger"],
       "json": {
         "passenger": {
-          "version": "5.0.23"
+          "version": "5.0.30"
         },
         "ruby": {
           "version": "2.3.1"

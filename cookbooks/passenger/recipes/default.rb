@@ -6,10 +6,10 @@ bash 'update' do
 end
 
 package "libcurl4-openssl-dev"
-package "apache2-threaded-dev"
+package "apache2-dev"
 package "libapr1-dev"
 package "libaprutil1-dev"
-package "apache2-mpm-worker"
+package "apache2"
 
 bash 'install_passenger' do
   cwd ::File.dirname("~/")
